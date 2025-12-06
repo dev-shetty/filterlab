@@ -67,12 +67,6 @@ const Creative = () => {
 
       ctx.fillStyle = `rgba(0, 0, 0, ${opacity})`
       ctx.fillRect(0, i * frameHeight, width, frameHeight)
-
-      // Add a white border between frames
-      if (i > 0) {
-        ctx.fillStyle = "white"
-        ctx.fillRect(0, i * frameHeight, width, 2)
-      }
     }
   }
 
