@@ -4,8 +4,12 @@ const applyGrayscale = (data) => {
     const g = data[i + 1]
     const b = data[i + 2]
     // Average method: (r + g + b) / 3
-    // Luminosity method: 0.21 R + 0.72 G + 0.07 B
     const avg = (r + g + b) / 3
+
+    // Human eye is more sensitive to green and less to blue.
+    // So we multiply each pixels with luminosity coefficients
+    // Luminosity method: 0.21 R + 0.72 G + 0.07 B
+
     data[i] = avg
     data[i + 1] = avg
     data[i + 2] = avg
@@ -17,6 +21,9 @@ const applySepia = (data) => {
     const r = data[i]
     const g = data[i + 1]
     const b = data[i + 2]
+
+    //Increase red and green → gives a warm brown tint
+    // Reduce blue → gives that aged photo tone
     data[i] = Math.min(255, r * 0.393 + g * 0.769 + b * 0.189)
     data[i + 1] = Math.min(255, r * 0.349 + g * 0.686 + b * 0.168)
     data[i + 2] = Math.min(255, r * 0.272 + g * 0.534 + b * 0.131)
@@ -36,6 +43,10 @@ const applyThreshold = (data) => {
     const r = data[i]
     const g = data[i + 1]
     const b = data[i + 2]
+
+    // 128 is the midpoint brightness:
+    // - Above → white
+    // - Below → black
     const avg = (r + g + b) / 3
     const val = avg > 128 ? 255 : 0
     data[i] = val
@@ -63,7 +74,7 @@ const applyClarendon = (data) => {
     let b = data[i + 2]
 
     // Increase contrast and saturation, add blue tint to shadows
-    // Simple approximation
+    // Darks get darker, whites get whiter
     r = (r - 128) * 1.2 + 128
     g = (g - 128) * 1.2 + 128
     b = (b - 128) * 1.2 + 128
@@ -189,7 +200,7 @@ export const getFilterCode = (filterType) => {
     case "grayscale":
       return `// Grayscale Filter
 // We convert RGB to a single gray value based on luminosity
-const gray = 0.21 * r + 0.72 * g + 0.07 * b;
+const gray = (r + g + b) / 3;
 pixel.r = gray;
 pixel.g = gray;
 pixel.b = gray;`
