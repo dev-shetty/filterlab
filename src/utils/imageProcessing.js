@@ -5,7 +5,7 @@ const applyGrayscale = (data) => {
     const b = data[i + 2]
     // Average method: (r + g + b) / 3
     // Luminosity method: 0.21 R + 0.72 G + 0.07 B
-    const avg = 0.21 * r + 0.72 * g + 0.07 * b
+    const avg = (r + g + b) / 3
     data[i] = avg
     data[i + 1] = avg
     data[i + 2] = avg
