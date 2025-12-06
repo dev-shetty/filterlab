@@ -29,7 +29,7 @@ const Home = () => {
             to="/basics"
             className="group px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition-all duration-200 flex items-center gap-2"
           >
-            Start Learning
+            Explore
             <ArrowRight
               size={20}
               className="group-hover:translate-x-1 transition-transform"
@@ -69,37 +69,6 @@ const Home = () => {
             Use your new knowledge to create unique effects and generate your
             own art.
           </p>
-        </div>
-      </div>
-
-      {/* About Me */}
-      <div className="relative rounded-2xl overflow-hidden bg-surface border border-white/10 p-12 md:p-20 text-center space-y-8">
-        <h2 className="text-3xl font-bold text-white">About Me</h2>
-        <p className="text-xl text-muted max-w-2xl mx-auto font-light">
-          Hi, I'm a CS Engineer passionate about demystifying technology. I
-          believe in digging deep into the "rabbit hole" of how things work.
-          Always be curious!
-        </p>
-
-        <div className="flex justify-center gap-6">
-          <a
-            href="#"
-            className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white"
-          >
-            <Github size={20} />
-          </a>
-          <a
-            href="#"
-            className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white"
-          >
-            <Linkedin size={20} />
-          </a>
-          <a
-            href="#"
-            className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white"
-          >
-            <Twitter size={20} />
-          </a>
         </div>
       </div>
     </div>
